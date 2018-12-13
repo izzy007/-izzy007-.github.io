@@ -1,0 +1,265 @@
+﻿@*@using Appick3._0._1.Controllers;
+@model IEnumerable<Appick3._0._1.Models.App>;*@
+
+@{
+    ViewBag.Title = "Home Page";
+}
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Layout = null;
+}
+@using System.Linq;
+ @*@Session["Username"].ToString();*@
+<html>
+
+<head>
+    <title>Free Movies Store Website Template | Home :: w3layouts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/Scripts/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/easing.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            $('#slider').nivoSlider();
+        });
+    </script>
+</head>
+<body ng-controller="testCtrl">
+
+	
+    <div class="header">
+        <div class="headertop_desc">
+        
+            <div class="header_bottom">
+                @*<a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$submit','')"
+                   class="button"
+                   id="ContentPlaceHolder1_submit"
+                   onclick="this.disabled = true;return false;">
+                    OK
+                </a>*@
+
+
+
+                <div class="header_bottom_left">
+                    @if (HttpContext.Current.Session["UserName"] != null)
+                    {
+                        <div class="categories">
+
+                            <ul>
+
+                                <h3>Personal</h3>
+                                <li>@Html.ActionLink("Wishlist", "Wishlist", "Home")</li>
+                                <li>@Html.ActionLink("Likes", "Likes", "Home")</li>
+                                <li>@Html.ActionLink("Installed", "Installed", "Home")</li>
+                                <li>@Html.ActionLink("Disliked", "Dislikes", "Home")</li>
+
+                            </ul>
+                        </div>
+                    }
+                </div>
+                <div class="header_bottom_right">
+                    <!------ Slider ------------>
+                    <div class="slider">
+                        <div class="slider-wrapper theme-default">
+                            <div id="slider" class="nivoSlider">
+
+                                <img src="~/Content/css/images/cover.jpg" data-thumb="images/1.jpg" alt="" />
+                                <img src="~/Content/css/images/2.jpg" data-thumb="~/Content/css/images/images/2.jpg" alt="" />
+                                <img src="~/Content/css/images/3.jpg" data-thumb="~/Content/css/images/images/3.jpg" alt="" />
+                                <img src="~/Content/css/images/4.jpg" data-thumb="~/Content/css/images/images/4.jpg" alt="" />
+                                <img src="~/Content/css/images/5.jpg" data-thumb="~/Content/css/images/images/5.jpg" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                    <!------End Slider ------------>
+                </div>
+                <div class="clear"></div>
+            </div>
+    </div>
+    </div>
+    <!------------End Header ------------>
+
+
+	<div class="main">
+		<div id="#rowOfApps">
+		<div class="wrap">
+			<div class="content">
+				@model Appick3._0._1.Models.App
+				@{
+					<div class="content_top">
+
+						@*<script>angular.module('myapp', []).controller('testCtrl', function ($scope) { });</script>
+						<div id="ajaxLoad" class="btn-group" ng-init="style={'background-color' : 'orange'}">
+							<button type="button" class="btn btn-default" ng-style="style1"
+									ng-click="style1=style; style2=null">
+								All Apps
+							</button>*@
+							<button id="ajaxLoad">
+								All Apps
+							</button>
+							 @* </div> *@ 
+
+							@Html.ActionLink("All Apps", "AllApps", "Home");
+							<script>
+								$(document).ready(function () {
+									$("#ajaxLoad").click(function () {
+										$("#rowOfApps").load("AllApps.cshtml");
+									});
+								});
+
+
+							</script>
+
+							<div class="heading">
+								<h3>New Products</h3>
+
+							</div>
+						</div>
+					<div class="section group">
+
+						@foreach (var item in Model.featured_apps)
+						{
+							<div class="grid_1_of_5 images_1_of_5">
+
+								<h5><a href="/Home/app_description/@item.AppID"><img src=@item.ImageLink>@item.Name</a></h5>
+
+								<div class="price-details">
+									<div class="price-number">
+										<p><span class="rupees">Downloads @item.Downloads</span></p>
+									</div>
+
+									<div class="clear"></div>
+								</div>
+							</div>
+						}
+
+
+
+					</div>
+
+					<div class="content_bottom">
+						<div class="heading">
+							<h3>TOP DOWNLOADS</h3>
+						</div>
+					</div>
+					<div class="section group">
+
+						@foreach (var items in Model.top_apps)
+						{
+							<div class="grid_1_of_5 images_1_of_5">
+
+								<h5><a href="/Home/app_description/@items.AppID"><img src=@items.ImageLink>@items.Name</a></h5>
+
+								<div class="price-details">
+									<div class="price-number">
+										<p><span class="downloads">Downloads: @items.Downloads</span></p>
+									</div>
+									<div class="add-cart">
+										<h4 style="color:white">HEEEE</h4>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</div>
+						}
+
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+
+    </div>
+    <div class="footer">
+        <div class="wrap">
+            <div class="section group">
+                <div class="col_1_of_4 span_1_of_4">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+						<li>@Html.ActionLink("Customer Services", "Policies", "Home")</li>
+						<li>@Html.ActionLink("Policies", "Policies", "Home")</li>
+                       
+                        <li><a href="~/Views/Home/Contact.cshtml">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col_1_of_4 span_1_of_4">
+                    <h4>Why buy from us</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li>@Html.ActionLink("Customer Services", "Policies", "Home")</li>
+                        <li>@Html.ActionLink("Policies", "Policies", "Home")</li>
+                        <li><a href="~/Views/Home/Contact.cshtml">Site Map</a></li>
+                        <li><a href="#">Search Terms</a></li>
+                    </ul>
+                </div>
+                <div class="col_1_of_4 span_1_of_4">
+                    <h4>My account</h4>
+                    <ul>
+                        <li><a href="~/Views/Home/Login.cshtml">Sign In</a></li>
+                        <li><a href="~/Views/Home/Index.cshtml">View Cart</a></li>
+						
+                        <li>@Html.ActionLink("My Wishlist", "Wishlist", "Home");</li>
+                      
+                        <li><a href="~/Views/Home/Contact.cshtml">Help</a></li>
+                    </ul>
+                </div>
+                <div class="col_1_of_4 span_1_of_4">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><span>+91-123-456789</span></li>
+                        <li><span>+00-123-000000</span></li>
+                    </ul>
+                    <div class="social-icons">
+                        <h4>Follow Us</h4>
+                        <ul>
+                            <li><a href="#" target="_blank"><img src="~/Content/css/images/facebook.png" alt="" /></a></li>
+                            <li><a href="#" target="_blank"><img src="~/Content/css/images/twitter.png" alt="" /></a></li>
+                            <li><a href="#" target="_blank"><img src="~/Content/css/images/skype.png" alt="" /> </a></li>
+                            <li><a href="#" target="_blank"> <img src="~/Content/css/images/linkedin.png" alt="" /></a></li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copy_right">
+
+				@*@if( !(string.IsNullOrEmpty((string)Session["UserName"])))
+				{
+					<div class="header_bottom_left">
+						<div class="categories">
+
+							<ul>
+
+								
+								<li>@Html.ActionLink("Wishlist", "Wishlist", "Home")</li>
+								<li>@Html.ActionLink("Likes", "Likes", "Home")</li>
+								<li>@Html.ActionLink("Installed", "Installed", "Home")</li>
+								<li>@Html.ActionLink("Disliked", "Dislikes", "Home")</li>
+
+							</ul>
+						</div>
+					</div>
+				}*@
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+    @*@ServerInfo.GetHtml()*@
+</body>
+
+</html>
+

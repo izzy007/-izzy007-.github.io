@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Wishlist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using System;
+<h2>Wishlist</h2>
+@foreach (var item in Model)
+{
+	
+	<div class="grid_1_of_5 images_1_of_5">
+
+		<h5><a href="/Home/app_description/@item.AppID"><img src=@item.ImageLink>@item.Name</a></h5>
+
+		<div class="price-details">
+			<div class="price-number">
+				<p><span class="rupees">$620.87</span></p>
+			</div>
+			<div class="add-cart">
+				<h4><a href="~/Views/Home/preview.cshtml">Add to Cart</a></h4>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+}
+

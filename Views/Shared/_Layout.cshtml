@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/Scripts/js/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/easing.js"></script>
+    <script type="text/javascript" src="~/Scripts/js/jquery.nivo.slider.js"></script>
+    <title>@ViewBag.Title Appick</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div class="header">
+        <div class="headertop_desc">
+            <div class="wrap">
+                <div class="nav_list">
+                    <ul>
+
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        
+                        <li>@Html.ActionLink("Sitemap", "Contact", "Home")</li>
+                       
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+                <div class="account_desc">
+                    <ul>
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Home")</li>
+                        <li>@Html.ActionLink("About", "preview", "Home")</li>
+						@if (HttpContext.Current.Session["UserName"] != null)
+						{
+						<li>@Html.ActionLink("Logout", "logout", "Home")</li>
+						}
+                        <li><a href="#">Checkout</a></li>
+                        <li><a href="#">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="header_top">
+                <div class="logo">
+                   <img src="~/Content/css/images/logo.png" alt="" /></a>
+                </div>
+                <div class="header_top_right">
+                    
+                    <div class="search_box">
+                        <form method="post" action="/Home/Search">
+							<div ng-controller="MyCtrl">
+								<script>
+									var myApp = angular.module('myApp', []);
+
+									function MyCtrl($scope) {
+										$scope.keyVal = null;
+										$scope.doSomething = function () {
+
+											var a = $scope.keyVal;
+									
+											Url.Action("Search", "HomeController", new { a })
+										}
+									}
+								</script>
+								<input name="key" type="text" ng-model="keyVal" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') { this.value = 'Search'; } else { var a = this.value; }">
+								@*<a href="/Home/Search/" class="w3-btn w3-black w3-hover-grey"><span class="glyphicon glyphicon-search"></span></a>*@
+								 <input type="button" id="FromAngular" ng-click="doSomething()" />
+								
+							</div>
+                           @*<input id="SearchBtn" type="submit" value="Search">*@
+							
+							@*<div id="FromAngular" ng-app="searching" ng-controller="myCtrl">
+								<ul >
+									<li ng-repeat="x in products">{{x}}</li>
+								</ul>
+							</div>*@
+						</form>
+                    </div>
+					
+                    <div class="clear"></div>
+                </div>
+                <script type="text/javascript">
+                                    function DropDown(el) {		  
+                                        this.dd = el;
+                                        this.initEvents();
+                                    }
+                                    DropDown.prototype = {
+                                        initEvents : function() {
+                                            var obj = this;
+
+                                            obj.dd.on('click', function(event){
+                                                $(this).toggleClass('active');
+                                                event.stopPropagation();
+                                            });
+                                        }
+                                    }
+
+                                    $(function() {
+
+                                        var dd = new DropDown( $('#dd') );
+
+                                        $(document).click(function() {
+                                            // all dropdowns
+                                            $('.wrapper-dropdown-2').removeClass('active');
+                                        });
+
+                                    });
+                </script>
+                <div class="clear"></div>
+            </div>
+            <div class="header_bottom">
+            
+               
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "preview", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    <li>@Html.ActionLink("Register", "Login", "Home")</li>
+                </ul>
+               Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>*@
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer >
+            
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Installed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Installed</h2>
+@using System;
+
+@foreach (var item in Model)
+{
+	@*<div class="col-lg-4 col-md-4">
+			<label>@item[0].Name</label>
+
+		</div>*@
+	<div class="grid_1_of_5 images_1_of_5">
+
+		<h5><a href="/Home/app_description/@item.AppID"><img src=@item.ImageLink>@item.Name</a></h5>
+
+		<div class="price-details">
+			<div class="price-number">
+                <p><span class="rupees">Downloads @item.Downloads</span></p>
+			</div>
+			<div class="add-cart">
+				
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+}
+
+

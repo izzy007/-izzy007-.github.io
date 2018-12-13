@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppickDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="App">
+    <Key>
+      <PropertyRef Name="AppID" />
+    </Key>
+    <Property Name="AppID" Type="Int32" Nullable="false" />
+    <Property Name="URL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImageLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Downloads" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Developer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rating" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReportCount" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Dislikes" Relationship="Self.FK_Dislike_App" FromRole="App" ToRole="Dislike" />
+    <NavigationProperty Name="Installeds" Relationship="Self.FK_Installed_App" FromRole="App" ToRole="Installed" />
+    <NavigationProperty Name="Likes" Relationship="Self.FK_Like_App" FromRole="App" ToRole="Like" />
+    <NavigationProperty Name="Ratings" Relationship="Self.FK_Rating_App" FromRole="App" ToRole="Rating" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_App" FromRole="App" ToRole="Review" />
+    <NavigationProperty Name="Wishlists" Relationship="Self.FK_Wishlist_App" FromRole="App" ToRole="Wishlist" />
+    <Property Name="Likes1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Dislikes1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reports" Relationship="AppickDatabaseModel.FK_Reporte_App" FromRole="App" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="Dislike">
+    <Key>
+      <PropertyRef Name="AppID" />
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="AppID" Type="Int32" Nullable="false" />
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="likes" Type="Int32" />
+    <NavigationProperty Name="App" Relationship="Self.FK_Dislike_App" FromRole="Dislike" ToRole="App" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Dislike_User" FromRole="Dislike" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Installed">
+    <Key>
+      <PropertyRef Name="AppID" />
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="AppID" Type="Int32" Nullable="false" />
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="intalls" Type="Int32" />
+    <NavigationProperty Name="App" Relationship="Self.FK_Installed_App" FromRole="Installed" ToRole="App" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Installed_User" FromRole="Installed" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Like">
+    <Key>
+      <PropertyRef Name="AppID" />
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="AppID" Type="Int32" Nullable="false" />
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="likes" Type="Int32" />
+    <NavigationProperty Name="App" Relationship="Self.FK_Like_App" FromRole="Like" ToRole="App" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Like_User" FromRole="Like" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Rating">
+    <Key>
+      <PropertyRef Name="AppID" />
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="AppID" Type="Int32" Nullable="false" />
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="RatingValue" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="App" Relationship="Self.FK_Rating_App" FromRole="Rating" ToRole="App" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Rating_User" FromRole="Rating" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="RID" />
+    </Key>
+    <Property Name="RID" Type="Int32" Nullable="false" />
+    <Property Name="AppID" Type="Int32" Nullable="false" />
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="Review1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RatingGiven" Type="Int32" />
+    <NavigationProperty Name="App" Relationship="Self.FK_Review_App" FromRole="Review" ToRole="App" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Review_User" FromRole="Review" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Dislikes" Relationship="Self.FK_Dislike_User" FromRole="User" ToRole="Dislike" />
+    <NavigationProperty Name="Installeds" Relationship="Self.FK_Installed_User" FromRole="User" ToRole="Installed" />
+    <NavigationProperty Name="Likes" Relationship="Self.FK_Like_User" FromRole="User" ToRole="Like" />
+    <NavigationProperty Name="Ratings" Relationship="Self.FK_Rating_User" FromRole="User" ToRole="Rating" />
+    <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_User" FromRole="User" ToRole="Review" />
+    <NavigationProperty Name="Wishlists" Relationship="Self.FK_Wishlist_User" FromRole="User" ToRole="Wishlist" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reports" Relationship="AppickDatabaseModel.FK_Report_User" FromRole="User" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="Wishlist">
+    <Key>
+      <PropertyRef Name="AppID" />
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="AppID" Type="Int32" Nullable="false" />
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="listed" Type="Int32" />
+    <NavigationProperty Name="App" Relationship="Self.FK_Wishlist_App" FromRole="Wishlist" ToRole="App" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Wishlist_User" FromRole="Wishlist" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Dislike_App">
+    <End Role="App" Type="Self.App" Multiplicity="1" />
+    <End Role="Dislike" Type="Self.Dislike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App">
+        <PropertyRef Name="AppID" />
+      </Principal>
+      <Dependent Role="Dislike">
+        <PropertyRef Name="AppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Installed_App">
+    <End Role="App" Type="Self.App" Multiplicity="1" />
+    <End Role="Installed" Type="Self.Installed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App">
+        <PropertyRef Name="AppID" />
+      </Principal>
+      <Dependent Role="Installed">
+        <PropertyRef Name="AppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Like_App">
+    <End Role="App" Type="Self.App" Multiplicity="1" />
+    <End Role="Like" Type="Self.Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App">
+        <PropertyRef Name="AppID" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="AppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rating_App">
+    <End Role="App" Type="Self.App" Multiplicity="1" />
+    <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App">
+        <PropertyRef Name="AppID" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="AppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_App">
+    <End Role="App" Type="Self.App" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App">
+        <PropertyRef Name="AppID" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="AppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wishlist_App">
+    <End Role="App" Type="Self.App" Multiplicity="1" />
+    <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App">
+        <PropertyRef Name="AppID" />
+      </Principal>
+      <Dependent Role="Wishlist">
+        <PropertyRef Name="AppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Dislike_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Dislike" Type="Self.Dislike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Dislike">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Installed_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Installed" Type="Self.Installed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Installed">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Like_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Like" Type="Self.Like" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Like">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rating_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Rating">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wishlist_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Wishlist" Type="Self.Wishlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Wishlist">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AppickDatabaseEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Apps" EntityType="Self.App" />
+    <EntitySet Name="Dislikes" EntityType="Self.Dislike" />
+    <EntitySet Name="Installeds" EntityType="Self.Installed" />
+    <EntitySet Name="Likes" EntityType="Self.Like" />
+    <EntitySet Name="Ratings" EntityType="Self.Rating" />
+    <EntitySet Name="Reviews" EntityType="Self.Review" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Wishlists" EntityType="Self.Wishlist" />
+    <AssociationSet Name="FK_Dislike_App" Association="Self.FK_Dislike_App">
+      <End Role="App" EntitySet="Apps" />
+      <End Role="Dislike" EntitySet="Dislikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Installed_App" Association="Self.FK_Installed_App">
+      <End Role="App" EntitySet="Apps" />
+      <End Role="Installed" EntitySet="Installeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Like_App" Association="Self.FK_Like_App">
+      <End Role="App" EntitySet="Apps" />
+      <End Role="Like" EntitySet="Likes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rating_App" Association="Self.FK_Rating_App">
+      <End Role="App" EntitySet="Apps" />
+      <End Role="Rating" EntitySet="Ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_App" Association="Self.FK_Review_App">
+      <End Role="App" EntitySet="Apps" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wishlist_App" Association="Self.FK_Wishlist_App">
+      <End Role="App" EntitySet="Apps" />
+      <End Role="Wishlist" EntitySet="Wishlists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Dislike_User" Association="Self.FK_Dislike_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Dislike" EntitySet="Dislikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Installed_User" Association="Self.FK_Installed_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Installed" EntitySet="Installeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Like_User" Association="Self.FK_Like_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Like" EntitySet="Likes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rating_User" Association="Self.FK_Rating_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Rating" EntitySet="Ratings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_User" Association="Self.FK_Review_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wishlist_User" Association="Self.FK_Wishlist_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Wishlist" EntitySet="Wishlists" />
+    </AssociationSet>
+    <EntitySet Name="Reports" EntityType="AppickDatabaseModel.Report" />
+    <AssociationSet Name="FK_Reporte_App" Association="AppickDatabaseModel.FK_Reporte_App">
+      <End Role="App" EntitySet="Apps" />
+      <End Role="Report" EntitySet="Reports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Report_User" Association="AppickDatabaseModel.FK_Report_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Report" EntitySet="Reports" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="AppID" />
+      <PropertyRef Name="UID" />
+    </Key>
+    <Property Name="AppID" Type="Int32" Nullable="false" />
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="reported" Type="Int32" />
+    <NavigationProperty Name="App" Relationship="AppickDatabaseModel.FK_Reporte_App" FromRole="Report" ToRole="App" />
+    <NavigationProperty Name="User" Relationship="AppickDatabaseModel.FK_Report_User" FromRole="Report" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Reporte_App">
+    <End Type="AppickDatabaseModel.App" Role="App" Multiplicity="1" />
+    <End Type="AppickDatabaseModel.Report" Role="Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App">
+        <PropertyRef Name="AppID" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="AppID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Report_User">
+    <End Type="AppickDatabaseModel.User" Role="User" Multiplicity="1" />
+    <End Type="AppickDatabaseModel.Report" Role="Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UID" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

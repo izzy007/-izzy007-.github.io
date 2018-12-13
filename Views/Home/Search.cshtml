@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search Results</h2>
+
+
+@foreach (var item in Model)
+{
+
+	if (item.Name != "NotFound")
+	{
+	<div class="grid_1_of_5 images_1_of_5">
+
+		<h5><a href="/Home/app_description/@item.AppID"><img src=@item.ImageLink>@item.Name</a></h5>
+
+		<div class="price-details">
+			<div class="price-number">
+				<p><span class="rupees">Downloads @item.Downloads</span></p>
+			</div>
+
+			<div class="clear"></div>
+		</div>
+	</div>
+	}
+	else
+	{
+		<h3>No Apps found!</h3>	
+	}
+}
+

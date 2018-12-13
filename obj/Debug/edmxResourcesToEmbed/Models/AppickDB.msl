@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AppickDatabaseModelStoreContainer" CdmEntityContainer="AppickDatabaseEntities1">
+    <EntitySetMapping Name="Apps">
+      <EntityTypeMapping TypeName="AppickDatabaseModel.App">
+        <MappingFragment StoreEntitySet="App">
+          <ScalarProperty Name="Dislikes1" ColumnName="Dislikes" />
+          <ScalarProperty Name="Likes1" ColumnName="Likes" />
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Downloads" ColumnName="Downloads" />
+          <ScalarProperty Name="Developer" ColumnName="Developer" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="ReportCount" ColumnName="ReportCount" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dislikes">
+      <EntityTypeMapping TypeName="AppickDatabaseModel.Dislike">
+        <MappingFragment StoreEntitySet="Dislike">
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="likes" ColumnName="likes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Installeds">
+      <EntityTypeMapping TypeName="AppickDatabaseModel.Installed">
+        <MappingFragment StoreEntitySet="Installed">
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="intalls" ColumnName="intalls" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Likes">
+      <EntityTypeMapping TypeName="AppickDatabaseModel.Like">
+        <MappingFragment StoreEntitySet="Like">
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="likes" ColumnName="likes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ratings">
+      <EntityTypeMapping TypeName="AppickDatabaseModel.Rating">
+        <MappingFragment StoreEntitySet="Rating">
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="RatingValue" ColumnName="RatingValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="AppickDatabaseModel.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="RID" ColumnName="RID" />
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="Review1" ColumnName="Review" />
+          <ScalarProperty Name="RatingGiven" ColumnName="RatingGiven" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="AppickDatabaseModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Wishlists">
+      <EntityTypeMapping TypeName="AppickDatabaseModel.Wishlist">
+        <MappingFragment StoreEntitySet="Wishlist">
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="listed" ColumnName="listed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="AppickDatabaseModel.Report">
+        <MappingFragment StoreEntitySet="Report">
+          <ScalarProperty Name="reported" ColumnName="reported" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="AppID" ColumnName="AppID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

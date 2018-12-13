@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="be4d3d4563744d4794d41d4977ad3277" Name="Diagram1">
+        <EntityTypeShape EntityType="AppickDatabaseModel.App" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppickDatabaseModel.Dislike" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppickDatabaseModel.Installed" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppickDatabaseModel.Like" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppickDatabaseModel.Rating" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppickDatabaseModel.Review" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppickDatabaseModel.User" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AppickDatabaseModel.Wishlist" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Dislike_App" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Installed_App" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Like_App" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Rating_App" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Review_App" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Wishlist_App" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Dislike_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Installed_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Like_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Rating_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Review_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Wishlist_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AppickDatabaseModel.Report" Width="1.5" PointX="3" PointY="2" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Reporte_App" />
+        <AssociationConnector Association="AppickDatabaseModel.FK_Report_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
